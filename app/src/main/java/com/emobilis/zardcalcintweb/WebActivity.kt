@@ -11,7 +11,10 @@ class WebActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
         mywebview=findViewById(R.id.webView)
+        webview()
     }
+
+
     private fun webview(){
 
         mywebview.webViewClient= WebViewClient()
@@ -20,5 +23,10 @@ class WebActivity : AppCompatActivity() {
             settings.javaScriptEnabled=true
             settings.safeBrowsingEnabled=true
         }
+    }
+
+    override fun onBackPressed() {
+        if (mywebview.canGoBack())mywebview.goBack()else
+        super.onBackPressed()
     }
 }
